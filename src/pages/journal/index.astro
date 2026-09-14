@@ -1,0 +1,6 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+const entries = (await getCollection('journal')).filter(({data}) => !data.draft).sort((a,b) => b.data.day-a.data.day);
+---
+<BaseLayout title="Journal — Project Robotique"><main class="article-wrap"><p class="eyebrow">Project log</p><h1 class="page-title">Journal<span style="color:var(--accent)">.</span></h1><p>Daily notes from the workbench. Short entries are welcome; the format is designed to grow with the project.</p><div class="journal-list">{entries.map((entry) => <a class="journal-item" href={`/journal/day-${entry.data.day}/`}><span class="day-number">Day {entry.data.day}</span><div><h3>{entry.data.title}</h3><p>{entry.data.summary}</p></div><span class="journal-date">{entry.data.date ? entry.data.date.toLocaleDateString('en-GB',{year:'numeric',month:'short',day:'numeric'}) : 'Open →'}</span></a>)}</div></main></BaseLayout>

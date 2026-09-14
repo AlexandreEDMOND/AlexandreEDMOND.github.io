@@ -1,0 +1,13 @@
+{
+  "name": "alexandreedmond-robotics-log",
+  "type": "module",
+  "scripts": {
+    "dev": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview"
+  },
+  "dependencies": {
+    "@astrojs/mdx": "^8.0.1",
+    "astro": "^7.3.2"
+  }
+}

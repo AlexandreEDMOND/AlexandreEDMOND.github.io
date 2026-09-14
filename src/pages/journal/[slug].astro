@@ -1,0 +1,7 @@
+---
+import { getCollection, render } from 'astro:content';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+export async function getStaticPaths(){const all=(await getCollection('journal')).filter(({data})=>!data.draft).sort((a,b)=>a.data.day-b.data.day);return all.map((entry,i)=>({params:{slug:`day-${entry.data.day}`},props:{entry,previous:all[i-1],next:all[i+1]}}));}
+const {entry,previous,next}=Astro.props; const {Content}=await render(entry);
+---
+<BaseLayout title={`Day ${entry.data.day} — ${entry.data.title}`} description={entry.data.summary}><main class="article-wrap"><p class="eyebrow">Project log / Day {entry.data.day}</p><h1 class="page-title">{entry.data.title}</h1><div class="article-meta"><span>Day {entry.data.day}</span>{entry.data.date && <time datetime={entry.data.date.toISOString()}>{entry.data.date.toLocaleDateString('en-GB',{year:'numeric',month:'long',day:'numeric'})}</time>}</div><article class="prose"><Content /></article><nav class="article-nav" aria-label="Journal navigation"><span>{previous && <a href={`/journal/day-${previous.data.day}/`}>← Day {previous.data.day}</a>}</span><a href="/journal/">All days</a><span>{next && <a href={`/journal/day-${next.data.day}/`}>Day {next.data.day} →</a>}</span></nav></main></BaseLayout>
