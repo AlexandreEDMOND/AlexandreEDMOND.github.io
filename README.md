@@ -1,4 +1,4 @@
-# Project Robotique
+# Project Robotics
 
 An English, public learning log about moving from machine learning to robotics with a SO-101 robot arm. The site is a static Astro project hosted on GitHub Pages.
 

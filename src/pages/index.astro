@@ -4,7 +4,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 const entries = (await getCollection('journal')).filter(({data}) => !data.draft).sort((a,b) => b.data.day-a.data.day);
 const latest = entries[0];
 ---
-<BaseLayout title="Project Robotique — Alexandre Edmond" description="A public learning log about building robotics and AI experiments with a SO-101 robot arm.">
+<BaseLayout title="Project Robotics — Alexandre Edmond" description="A public learning log about building robotics and AI experiments with a SO-101 robot arm.">
   <main>
     <section class="hero"><p class="eyebrow">Learning robotics in public · 01 / 365</p><h1>From ML engineer<br>to <em>Robotics AI.</em></h1><p>A practical record of learning, building and testing with a SO-101 robot arm. Each entry explains what I tried, what I learned and what comes next.</p><a class="button-link" href="/journal/">Read the journal →</a></section>
     <section class="section split"><div><p class="kicker">The project</p><h2>Understand it.<br>Build it.<br>Measure it.</h2></div><p>This is a one-year path from machine learning to robotics. I am starting with coordinate frames and forward kinematics, then moving toward imitation learning, perception and real experiments. The notes are in English and the code stays open whenever it can help someone reproduce the work.</p></section>
